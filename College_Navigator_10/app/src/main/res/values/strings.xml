@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">College_Navigator_1.0</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="mystring">mystring</string>
+
+    <string name="Space_stn"> </string>
+
+
+<!--///// Welcome Page///////////-->
+    <string name="WelcomeTitle">College Navigator</string>
+    <string name="WelcomeButtonstring">Let\'s Begin</string>
+    <string name="WelcomeSubtitle">Search for Any school and
+ Find the right School for you </string>
+
+
+<!--///// Log In Page///////////-->
+    <string name="LogIn_str">Log In</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="NoAccount"><u>Don\'t have an account? Sign Up</u></string>
+    <string name="Guest">Countinue As a Guest</string>
+
+
+<!--///// Search page///////////-->
+    <string name="Search_For_College">Search For a College</string>
+    <string name="NameofSchool">Name Of School:</string>
+    <string name="AdvancedSearch"><u>Advanced Search</u></string>
+    <string name="Search">Search</string>
+    <string name="States">States:</string>
+    <string name="NoPreference">No Preference</string>
+    <string name="Programs_Majors">Programs/Majors</string>
+
+    <string name="Level_Award">Level of Award</string>
+    <string name="Certificate">Certificate</string>
+    <string name="Associate">Associate\'s</string>
+    <string name="Bachelor">Bachelor\'s</string>
+    <string name="Tuition">Tuition</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>
