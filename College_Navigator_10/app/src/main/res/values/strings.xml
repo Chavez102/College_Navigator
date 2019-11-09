@@ -31,14 +31,14 @@
     <string name="Search">Search</string>
     <string name="States">States:</string>
     <string name="NoPreference">No Preference</string>
-    <string name="Programs_Majors">Programs/Majors</string>
+    <string name="Programs_Majors">Programs/Majors:</string>
 
     <string name="Level_Award">Level of Award</string>
     <string name="Certificate">Certificate</string>
     <string name="Associate">Associate\'s</string>
     <string name="Bachelor">Bachelor\'s</string>
-    <string name="Tuition">Tuition</string>
-    <string name="test">Tuition</string>
+    <string name="Advanced">Advanced</string>
+    <string name="Tuition">Tuition:</string>
 
 
 

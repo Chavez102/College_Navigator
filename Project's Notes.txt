@@ -10,3 +10,11 @@ You should do this by getting queries and get a json file
 
 https://collegescorecard.ed.gov/data/documentation/
 my API: LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V
+
+
+
+https://api.data.gov/ed/collegescorecard/v1/schools.json?
+api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V
+
+&school.locale=21&
+_fields=school.name,latest.student.size,school.school_url,ope8_id
