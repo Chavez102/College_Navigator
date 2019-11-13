@@ -18,3 +18,14 @@ api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V
 
 &school.locale=21&
 _fields=school.name,latest.student.size,school.school_url,ope8_id
+
+///////////////////////////////////////////////////////////////
+https://api.data.gov/ed/collegescorecard/v1/schools.json?
+
+api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V
+
+&
+_fields=
+school.name,
+latest.cost.tuition.in_state,
+school.city
