@@ -9,7 +9,7 @@
     <string name="Space_stn"> </string>
 
 
-<!--///// Welcome Page///////////-->
+    <!--///// Welcome Page///////////-->
 
 
     <string name="WelcomeTitle">College Navigator</string>
@@ -19,7 +19,7 @@
  Find the right School for you </string>
 
 
-<!--///// Log In Page///////////-->
+    <!--///// Log In Page///////////-->
     <string name="LogIn_str">Log In</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
@@ -27,7 +27,7 @@
     <string name="Guest">Countinue As a Guest</string>
 
 
-<!--///// Search page///////////-->
+    <!--///// Search page///////////-->
     <string name="Search_For_College">Search For a College</string>
     <string name="NameofSchool">Name Of School:</string>
     <string name="AdvancedSearch"><u>Advanced Search</u></string>
@@ -43,19 +43,12 @@
     <string name="Advanced">Advanced</string>
     <string name="Tuition">Tuition:</string>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!--///// Results page///////////-->
+    <string name="Results">Results</string>
+    <string name="SchoolNamestr">School Name</string>
+    <string name="SchoolStatetr">School State</string>
+    <string name="SchoolTutionInstate">School instate Tuition</string>
+    <string name="SchoolTutionOutstate">School out-state Tuition</string>
 
 
 </resources>

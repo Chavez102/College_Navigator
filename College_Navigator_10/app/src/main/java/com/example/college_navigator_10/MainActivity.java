@@ -101,70 +101,78 @@ public int i=3;
 
         });
 
-        download_btn.setOnClickListener (
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View view) {
-                        //Unique for android to access the web!!!!
-                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                                    .permitAll().build();
-                        StrictMode.setThreadPolicy(policy);
+        download_btn.setOnClickListener (new View.OnClickListener() {
+            //region OnClick
+            @Override
+            public void onClick(View view) {
+
+                //Unique for android to access the web!!!!
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                        .permitAll().build();
+                StrictMode.setThreadPolicy(policy);
 
 
 
 
-                        String original_url="https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math";
-                        //https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math
+                String original_url="https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math";
+                //https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math
 
-                        int page=0;
-                        String pageAddOn="&page=";
-                        //url &page=0
+                int page=0;
+                String pageAddOn="&page=";
+                //url &page=0
 
-                        String url=original_url+pageAddOn+page;
+                String url=original_url+pageAddOn+page;
 
-                        AllColleges colleges_perpage = new AllColleges();
+                AllColleges colleges_perpage = new AllColleges();
 
-                        College[] arrayofColleges=new College[8000];
-                        ArrayList<College> list=new ArrayList<>();
-                        int arrayindex=0;
-                        ObjectMapper mapper = new ObjectMapper();
-                        do {
-                            try {
+                College[] arrayofColleges=new College[8000];
+                ArrayList<College> list=new ArrayList<>();
+                int arrayindex=0;
+                ObjectMapper mapper = new ObjectMapper();
+                reff=FirebaseDatabase.getInstance().getReference().child("Colleges");
+                do {
+                    try {
 
-                                colleges_perpage = mapper.readValue(new URL(url),AllColleges.class);
+                        colleges_perpage = mapper.readValue(new URL(url),AllColleges.class);
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            for(int i=0;i<colleges_perpage.colleges.length;i++) {
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    for(int i=0;i<colleges_perpage.colleges.length;i++) {
 
-                                arrayofColleges[arrayindex]=colleges_perpage.colleges[i];
-                                arrayindex++;
-                                list.add(colleges_perpage.colleges[i]);
-                            }
-                            Log.d("PAGE",page+"/////////////////////////////////////////////////////////////////////////");
-                            page++;
-                            url=original_url+pageAddOn+page;
-                        }while(page<72);
+//                                arrayofColleges[arrayindex]=colleges_perpage.colleges[i];
+//                                arrayindex++;
+//                                list.add(colleges_perpage.colleges[i]);
 
-                        Log.d("lAST SCHOOLE NAME",arrayofColleges[7111].schoolname+"/////////////////////////////////////////////////////////////////////////");
+                        reff.child(colleges_perpage.colleges[i].getId())
+                                .setValue(colleges_perpage.colleges[i]);
+                        //region implements writeToDatabase
+
+                        /////////////////////WRITE TO DATABASE///////////////////////////////////////////////////////
+
+
+                        // reff.push().setValue(mycollege);
+
+                        //reff=FirebaseDatabase.getInstance().getReference().child("Colleges");
+
+                        //                reff=FirebaseDatabase.getInstance().getReference()
+                        //                        .child("Colleges")
+                        //                            .child("College"+String.valueOf(i));
+                        //                reff.setValue(mycollege);
+                        //endregion implements writeToDatabase
 
                     }
-                    //region implements writeToDatabase
+                    Log.d("PAGE",page+"/////////////////////////////////////////////////////////////////////////");
+                    page++;
+                    url=original_url+pageAddOn+page;
+                }while(page<72);
 
-                /////////////////////WRITE TO DATABASE///////////////////////////////////////////////////////
 
 
-                                   // reff.push().setValue(mycollege);
 
-                                    //reff=FirebaseDatabase.getInstance().getReference().child("Colleges");
-                                    //reff.child("College"+String.valueOf(i)).setValue(mycollege);
-                //                reff=FirebaseDatabase.getInstance().getReference()
-                //                        .child("Colleges")
-                //                            .child("College"+String.valueOf(i));
-                //                reff.setValue(mycollege);
-            //endregion implements writeToDatabase
-                }
+            }
+                                         }
+            //endregion OnClick
         );
 
 

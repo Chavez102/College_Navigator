@@ -1,5 +1,6 @@
 package com.example.college_navigator_10.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Range;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,14 +37,15 @@ public class HomeFragment extends Fragment {
             "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
             "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" };
 
-
+    View root;
     RangeSeekBar rangeSeekBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+         root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        setSearchBtn();
 
 
         ExpandingList expandingList = (ExpandingList) root.findViewById(R.id.expanding_list_main);
@@ -76,9 +79,9 @@ public class HomeFragment extends Fragment {
         final TextView tvMax = (TextView) root.findViewById(R.id.textMax1);
 
 // set listener
-        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener(){
             @Override
-            public void valueChanged(Number minValue, Number maxValue) {
+            public void valueChanged(Number minValue, Number maxValue){
                 tvMin.setText(String.valueOf(minValue));
                 tvMax.setText(String.valueOf(maxValue));
             }
@@ -101,35 +104,23 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    public void setSearchBtn(){
+        Button searchbtn=(Button)root.findViewById(R.id.search_btn);
+
+        searchbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),Results_Main_page_Controller.class);
+
+                startActivity(intent);
+            }
+        }
 
 
+        );
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 

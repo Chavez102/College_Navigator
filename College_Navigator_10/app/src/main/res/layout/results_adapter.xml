@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="398dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/result_item_background"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="174dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+
+            >
+
+
+            <TextView
+                android:id="@+id/SchoolName_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:background="@color/white"
+                android:text="@string/NameofSchool" />
+
+            <TextView
+                android:id="@+id/SchoolState_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="@string/SchoolStatetr"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/instate_Tuition_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/white"
+                android:text="@string/SchoolTutionInstate"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/outState_Tuition_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/white"
+                android:text="@string/SchoolTutionOutstate"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/heart_imgbtn"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+
+
+            android:contentDescription="@string/mystring"
+            app:srcCompat="@drawable/heart_logo_white"
+            tools:layout_editor_absoluteX="316dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
