@@ -20,9 +20,9 @@ public class College {
 
 	@JsonProperty("latest.cost.tuition.in_state")public String instate_tuition;
 	@JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")String Readingpercentile_25;
-	@JsonProperty("latest.admissions.sat_scores.25th_percentile.math")String Mathpercentile_25;
-	@JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")public String Readingpercentile_75;
-	@JsonProperty("latest.admissions.sat_scores.75th_percentile.math")public String Mathpercentile_75;
+	@JsonProperty("latest.admissions.sat_scores.25th_percentile.math")String mathpercentile_25;
+	@JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")public String readingpercentile_75;
+	@JsonProperty("latest.admissions.sat_scores.75th_percentile.math")public String mathpercentile_75;
 
 	public String getSchoolname() {
 		return schoolname;
@@ -57,15 +57,15 @@ public class College {
 	}
 
 	public String getMathpercentile_25() {
-		return Mathpercentile_25;
+		return mathpercentile_25;
 	}
 
 	public String getReadingpercentile_75() {
-		return Readingpercentile_75;
+		return readingpercentile_75;
 	}
 
 	public String getMathpercentile_75() {
-		return Mathpercentile_75;
+		return mathpercentile_75;
 	}
 
 	public String getId() {
@@ -101,15 +101,15 @@ public class College {
 	}
 
 	public void setMathpercentile_25(String mathpercentile_25) {
-		Mathpercentile_25 = mathpercentile_25;
+		mathpercentile_25 = mathpercentile_25;
 	}
 
 	public void setReadingpercentile_75(String readingpercentile_75) {
-		Readingpercentile_75 = readingpercentile_75;
+		readingpercentile_75 = readingpercentile_75;
 	}
 
 	public void setMathpercentile_75(String mathpercentile_75) {
-		Mathpercentile_75 = mathpercentile_75;
+		mathpercentile_75 = mathpercentile_75;
 	}
 
 	public void setId(String id) {

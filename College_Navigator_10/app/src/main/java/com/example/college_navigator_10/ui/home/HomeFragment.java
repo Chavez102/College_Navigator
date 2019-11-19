@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -24,6 +25,7 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListen
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.diegodobelo.expandingview.ExpandingItem;
 import com.diegodobelo.expandingview.ExpandingList;
+import com.example.college_navigator_10.MainActivity;
 import com.example.college_navigator_10.R;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
@@ -45,9 +47,10 @@ public class HomeFragment extends Fragment {
 
          root = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         setSearchBtn();
 
-
+        //region ExpandingList set up
         ExpandingList expandingList = (ExpandingList) root.findViewById(R.id.expanding_list_main);
 
         ExpandingItem item = expandingList.createNewItem(R.layout.expanding_layout);
@@ -67,10 +70,14 @@ public class HomeFragment extends Fragment {
         states_input_ACTextview.setAdapter(states_adapter);
         ((TextView) AdvancedSettings_items.findViewById(R.id.sub_title)).setText("One");
 
-      //  item.setIndicatorColorRes(R.color.black);
+        //  item.setIndicatorColorRes(R.color.black);
         //      item.setIndicatorIconRes(R.drawable.ic_icon);
 
-////////////////SEAKBAR
+
+
+
+        //region SEAKBAR SET UP
+
         // get seekbar from view
         final CrystalRangeSeekbar rangeSeekbar = (CrystalRangeSeekbar) root.findViewById(R.id.rangeSeekbar1);
 
@@ -96,13 +103,18 @@ public class HomeFragment extends Fragment {
         });
 
 
+        //endregion SEEKBAR SET UP
 
 
-
+        //endregion  ExpandingList set up
 
 
         return root;
     }
+
+
+
+
 
     public void setSearchBtn(){
         Button searchbtn=(Button)root.findViewById(R.id.search_btn);
@@ -110,9 +122,18 @@ public class HomeFragment extends Fragment {
         searchbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),Results_Main_page_Controller.class);
 
-                startActivity(intent);
+                Log.d("Search Button","CLicked/////////////////////////////////////////");
+
+                Fragment fragment = new Results_Main_page_Controller();
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.nav_host_fragment, fragment);
+                //transaction.addToBackStack(null);
+                fr.commit();
+
+
+
+
             }
         }
 

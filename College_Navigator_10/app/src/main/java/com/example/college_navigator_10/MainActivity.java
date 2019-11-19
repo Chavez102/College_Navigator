@@ -2,6 +2,8 @@ package com.example.college_navigator_10;
 
 import android.app.Dialog;
 
+
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,17 +15,20 @@ import android.widget.Button;
 
 import com.example.college_navigator_10.Data_Management_Colleges.AllColleges;
 import com.example.college_navigator_10.Data_Management_Colleges.College;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -43,42 +48,44 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-public static Dialog logIn_popup;
-public String hello="d";
-public int i=3;
-
+    public static Dialog logIn_popup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_page);
-        Button letsGo_Btn=(Button)findViewById(R.id.LetsGo_btn);
-        Button download_btn=(Button)findViewById(R.id.download_btn);
 
+        download_btn_setp();
         logIn_popup=new Dialog(this);
+        lets_Go_btn_setup();
+    }
+
+     //region READ DATABASE///////////////////////////////////////////////////////
+
+    //                reff=FirebaseDatabase.getInstance().getReference().child("Colleges").child("College2");
+    //
+    //                reff.addValueEventListener(new ValueEventListener() {
+    //                    @Override
+    //                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+    //                        String str=dataSnapshot.child("name").getValue().toString();
+    //
+    //                        Log.d(TAG,"////////////////////////////"+str);
+    //                    }
+    //
+    //                    @Override
+    //                    public void onCancelled(@NonNull DatabaseError databaseError) {
+    //
+    //                    }
+    //                });
+
+
+    //endregion READ DATABASE///////////////////////////////////////////////////////
+
+    public void lets_Go_btn_setup(){
+        Button letsGo_Btn=(Button)findViewById(R.id.LetsGo_btn);
+
         letsGo_Btn.setOnClickListener(new View.OnClickListener(){
-             @Override
-             public void onClick(View view){
-
-        //region READ DATABASE///////////////////////////////////////////////////////
-
-        //                reff=FirebaseDatabase.getInstance().getReference().child("Colleges").child("College2");
-        //
-        //                reff.addValueEventListener(new ValueEventListener() {
-        //                    @Override
-        //                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        //                        String str=dataSnapshot.child("name").getValue().toString();
-        //
-        //                        Log.d(TAG,"////////////////////////////"+str);
-        //                    }
-        //
-        //                    @Override
-        //                    public void onCancelled(@NonNull DatabaseError databaseError) {
-        //
-        //                    }
-        //                });
-
-
-        //endregion READ DATABASE///////////////////////////////////////////////////////
+            @Override
+            public void onClick(View view){
 
 
                 logIn_popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -96,13 +103,17 @@ public int i=3;
                         logIn_popup.hide();
                     }
                 });
-             }
+            }
 
 
         });
+    }
 
+    public void download_btn_setp(){
+
+        Button download_btn=(Button)findViewById(R.id.download_btn);
         download_btn.setOnClickListener (new View.OnClickListener() {
-            //region OnClick
+
             @Override
             public void onClick(View view) {
 
@@ -110,46 +121,40 @@ public int i=3;
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
-
-
-
-
-                String original_url="https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math";
+                String original_url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math";
                 //https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math
 
-                int page=0;
-                String pageAddOn="&page=";
+                int page = 0;
+                String pageAddOn = "&page=";
                 //url &page=0
 
-                String url=original_url+pageAddOn+page;
+                String url = original_url + pageAddOn + page;
 
                 AllColleges colleges_perpage = new AllColleges();
 
-                College[] arrayofColleges=new College[8000];
-                ArrayList<College> list=new ArrayList<>();
-                int arrayindex=0;
                 ObjectMapper mapper = new ObjectMapper();
-                reff=FirebaseDatabase.getInstance().getReference().child("Colleges");
+
+                Remove_All_College_FromDatabase();
+
                 do {
                     try {
 
-                        colleges_perpage = mapper.readValue(new URL(url),AllColleges.class);
+                        colleges_perpage = mapper.readValue(new URL(url), AllColleges.class);
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    for(int i=0;i<colleges_perpage.colleges.length;i++) {
+                    for (int i = 0; i < colleges_perpage.colleges.length; i++) {
 
-//                                arrayofColleges[arrayindex]=colleges_perpage.colleges[i];
-//                                arrayindex++;
-//                                list.add(colleges_perpage.colleges[i]);
+                      String schoolname=colleges_perpage.colleges[i].getSchoolname();
+                      schoolname=schoolname.replace('#',' ');
+                      schoolname=schoolname.replace('.','_');
 
-                        reff.child(colleges_perpage.colleges[i].getId())
+
+                        reff.child(schoolname)
                                 .setValue(colleges_perpage.colleges[i]);
-                        //region implements writeToDatabase
 
-                        /////////////////////WRITE TO DATABASE///////////////////////////////////////////////////////
-
+                        //region writeToDatabase Example
 
                         // reff.push().setValue(mycollege);
 
@@ -159,23 +164,24 @@ public int i=3;
                         //                        .child("Colleges")
                         //                            .child("College"+String.valueOf(i));
                         //                reff.setValue(mycollege);
-                        //endregion implements writeToDatabase
+                        //endregion writeToDatabase Example
 
                     }
-                    Log.d("PAGE",page+"/////////////////////////////////////////////////////////////////////////");
+                    Log.d("PAGE", page + "/////////////////////////////////////////////////////////////////////////");
                     page++;
-                    url=original_url+pageAddOn+page;
-                }while(page<72);
-
-
+                    url = original_url + pageAddOn + page;
+                } while (page < 72);
 
 
             }
-                                         }
-            //endregion OnClick
-        );
 
+        });
 
+    }
+
+    public void Remove_All_College_FromDatabase(){
+        reff=FirebaseDatabase.getInstance().getReference().child("Colleges");
+        reff.removeValue();
     }
 
     public void AddingMenu(){
@@ -192,5 +198,8 @@ public int i=3;
         NavigationUI.setupWithNavController(navView, navController);
 
     }
+
+
+
 
 }
