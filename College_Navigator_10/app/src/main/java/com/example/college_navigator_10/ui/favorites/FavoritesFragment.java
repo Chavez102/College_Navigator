@@ -15,6 +15,8 @@ import com.example.college_navigator_10.ui.home.ResultsList_Adapter;
 
 import java.util.ArrayList;
 
+import static com.example.college_navigator_10.MainActivity.Official_Current_User;
+
 public class FavoritesFragment extends Fragment {
     ArrayList<College> colleges_List=new ArrayList<>();
 
@@ -26,18 +28,7 @@ public class FavoritesFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
 
-        College c1=new College();
-        c1.setSchoolname("Name");
-        c1.setinstate_tuition("500");
 
-        colleges_List.add(c1);
-
-        College c2=new College();
-        c1.setSchoolname("Nam2");
-        c1.setinstate_tuition("600");
-
-
-        colleges_List.add(c1);
 
         for(int i=0;i<50;i++){
             College c3=new College();
@@ -51,7 +42,7 @@ public class FavoritesFragment extends Fragment {
 
         ListView favorites_listView=(ListView)root.findViewById(R.id.favorites_listView);
 
-        ResultsList_Adapter favoritesList_adapter=new ResultsList_Adapter(root.getContext(),R.layout.results_adapter,colleges_List);
+        ResultsList_Adapter favoritesList_adapter=new ResultsList_Adapter(root.getContext(),R.layout.results_adapter,Official_Current_User.getlikedCollege());
 
         favorites_listView.setAdapter(favoritesList_adapter);
 

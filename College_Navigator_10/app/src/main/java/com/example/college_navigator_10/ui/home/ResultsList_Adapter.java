@@ -30,6 +30,7 @@ import static com.example.college_navigator_10.MainActivity.Official_Current_Use
 import static com.example.college_navigator_10.MainActivity.addUserToDatabase;
 
 public class ResultsList_Adapter extends ArrayAdapter<College> {
+    DatabaseReference reff;
 
     Context mcontext;
     int mResource;
@@ -51,32 +52,89 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
         String out_state_tuition=getItem(position).getTuition_outstate();
 
 
-        College newcollege=new College();
-        newcollege.setSchoolname(Schoolname);
-        newcollege.setState(state);
-        newcollege.setinstate_tuition(in_state_tuition);
-        newcollege.setTuition_outstate(out_state_tuition);
+//        College newcollege=new College();
+//        newcollege.setSchoolname(Schoolname);
+//        newcollege.setState(state);
+//        newcollege.setinstate_tuition(in_state_tuition);
+//        newcollege.setTuition_outstate(out_state_tuition);
+
+
 
         LayoutInflater inflater =LayoutInflater.from(mcontext);
 
         convertView=inflater.inflate(mResource,parent,false);
 
 
-        TextView SchoolName_TextView=(TextView)convertView.findViewById(R.id.SchoolName_TextView) ;
-        TextView SchoolState_TextView=(TextView)convertView.findViewById(R.id.SchoolState_TextView);
-        TextView School_InState_Tuition_TextView=(TextView)convertView.findViewById(R.id.instate_Tuition_TextView);
-        TextView School_OutState_Tuition_TextView=(TextView)convertView.findViewById(R.id.outState_Tuition_TextView);
+        findCollege(Schoolname,convertView);
 
-        setHeartBtn(convertView,newcollege);
+//        setHeartBtn(convertView,newcollege);
 
 
-        SchoolName_TextView.setText(newcollege.getSchoolname());
-        SchoolState_TextView.setText(newcollege.getState());
-        School_InState_Tuition_TextView.setText(newcollege.getinstate_tuition());
-        School_OutState_Tuition_TextView.setText(newcollege.getTuition_outstate());
         return convertView;
 
     }
+
+    public static College collegeFound=new College();
+
+
+    private void findCollege(String schoolname,final View convertView) {
+        final TextView SchoolName_TextView=(TextView)convertView.findViewById(R.id.SchoolName_TextView) ;
+        final TextView SchoolState_TextView=(TextView)convertView.findViewById(R.id.SchoolState_TextView);
+        final TextView School_InState_Tuition_TextView=(TextView)convertView.findViewById(R.id.instate_Tuition_TextView);
+        final  TextView School_OutState_Tuition_TextView=(TextView)convertView.findViewById(R.id.outState_Tuition_TextView);
+
+        ValueEventListener SearchbyName_valueEventListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                College newcollege=new College();
+
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+
+                        newcollege= snapshot.getValue(College.class);
+                        Log.d("CollegeFound",collegeFound.getSchoolname()+"//////////////////");
+
+
+                        SchoolName_TextView.setText(newcollege.getSchoolname());
+                        SchoolState_TextView.setText(newcollege.getState());
+                        School_InState_Tuition_TextView.setText(newcollege.getinstate_tuition());
+                        School_OutState_Tuition_TextView.setText(newcollege.getTuition_outstate());
+
+                    }
+                    setHeartBtn(convertView,newcollege);
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+
+        Query query = FirebaseDatabase.getInstance().getReference("Colleges")
+                .orderByChild("schoolname")
+                .equalTo(schoolname);
+
+        query.addListenerForSingleValueEvent(SearchbyName_valueEventListener);
+
+        Log.d("Finishnng method ","pppppppppppppppppppppppppppppppppppppppppppp");
+        Log.d("Finishnng method ",collegeFound.getSchoolname()+" pppppppppppppppppppppppppppppppppppppppppppp");
+
+
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     public void setHeartBtn(View convertView,final College selectedCollege){
@@ -106,9 +164,6 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
 
     }
 
-    DatabaseReference reff;
-
-
 
    public void add_College_toUserLikedColleges(College collegetobe_Added){
 
@@ -132,24 +187,21 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
     }
 
 
-
-
     public void remove_College_toUserLikedColleges(College collegetobe_Removed){
 
-//
-//
-//        Official_Current_User.likedCollege.remove();
+
+        Official_Current_User.likedCollege.remove(collegetobe_Removed);
 
 
 
-//        Official_Current_User.LogArrayList();
-//
-//        reff=FirebaseDatabase.getInstance().getReference()
-//                .child("AllUsers")
-//                .child(Official_Current_User.getUsername());
-//
-//        reff=reff.child("likedCollege");
-//        reff.setValue(Official_Current_User.getlikedCollege());
+        Official_Current_User.LogArrayList();
+
+        reff=FirebaseDatabase.getInstance().getReference()
+                .child("AllUsers")
+                .child(Official_Current_User.getUsername());
+
+        reff=reff.child("likedCollege");
+        reff.setValue(Official_Current_User.getlikedCollege());
 
 
     }

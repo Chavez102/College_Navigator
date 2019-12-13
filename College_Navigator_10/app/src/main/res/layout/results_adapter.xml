@@ -35,15 +35,13 @@
                 android:id="@+id/SchoolName_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="33dp"
-                android:background="@color/white"
-                android:text="@string/NameofSchool" />
+                android:background="@color/white" />
 
             <TextView
                 android:id="@+id/SchoolState_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:text="@string/SchoolStatetr"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -61,7 +59,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="26dp"
                 android:background="@color/white"
-                android:text="@string/SchoolTutionInstate"
                 android:textAlignment="center"
                 android:textSize="12sp" />
 
@@ -70,7 +67,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:text="@string/SchoolTutionOutstate"
                 android:textAlignment="center"
                 android:textSize="12sp" />
         </LinearLayout>
