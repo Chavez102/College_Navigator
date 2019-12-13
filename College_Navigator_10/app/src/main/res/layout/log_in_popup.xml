@@ -35,7 +35,7 @@
     <EditText
 
 
-        android:id="@+id/username_EditText"
+        android:id="@+id/LogIn_username_ET"
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         android:text="@string/Password"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_EditText" />
+        app:layout_constraintTop_toBottomOf="@+id/LogIn_username_ET" />
 
     <Button
         android:id="@+id/login_btn"
@@ -73,10 +73,10 @@
         android:background="@drawable/buttoncostumized"
         android:text="@string/LogIn_str"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_EditText" />
+        app:layout_constraintTop_toBottomOf="@+id/LogIn_password_EditText" />
 
     <EditText
-        android:id="@+id/password_EditText"
+        android:id="@+id/LogIn_password_EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/New_Account_TV"
         android:layout_width="132dp"
         android:layout_height="46dp"
         android:layout_marginTop="24dp"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toStartOf="@+id/login_btn"
         app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_EditText" />
+        app:layout_constraintTop_toBottomOf="@+id/LogIn_password_EditText" />
 
     <Button
         android:id="@+id/Guest_btn"
@@ -113,6 +113,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+    <TextView
+        android:id="@+id/ErrorMessage_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/LogIn_username_ET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import com.example.college_navigator_10.R;
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 public class HomeFragment extends Fragment {
+    //region public static String[] statesArray=new String[]
     public static String[] statesArray=new String[]{"California", "Alabama", "Arkansas", "Arizona",
             "Alaska", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
             "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
@@ -39,111 +41,124 @@ public class HomeFragment extends Fragment {
             "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
             "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" };
 
+
+    //endregion  public static String[] statesArray=new String[]
+
+
+
     View root;
     RangeSeekBar rangeSeekBar;
+
+    AutoCompleteTextView states_input_ACTextview;
+    EditText school_Name_Edit_Text;
+    CrystalRangeSeekbar rangeSeekbar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-         root = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        school_Name_Edit_Text=(EditText) root.findViewById(R.id.School_Name_editText);
+
+        Advanced_Search_ExpandList_SetUp();
 
         setSearchBtn();
-
-        //region ExpandingList set up
-        ExpandingList expandingList = (ExpandingList) root.findViewById(R.id.expanding_list_main);
-
-        ExpandingItem item = expandingList.createNewItem(R.layout.expanding_layout);
-
-            /*ExpandingItem extends from View, so you can call
-            findViewById to get any View inside the layout*/
-        TextView Title= (TextView) item.findViewById(R.id.title);
-        Title.setText(R.string.AdvancedSearch);
-        //This will create 1 items
-        item.createSubItems(1);
-
-//get a sub item View
-        View AdvancedSettings_items = item.getSubItemView(0);
-        AutoCompleteTextView states_input_ACTextview=(AutoCompleteTextView)AdvancedSettings_items.findViewById(
-                R.id.states_input_ACTextview);
-        ArrayAdapter<String> states_adapter=new ArrayAdapter<String>(root.getContext(),android.R.layout.simple_list_item_1,statesArray);
-        states_input_ACTextview.setAdapter(states_adapter);
-        ((TextView) AdvancedSettings_items.findViewById(R.id.sub_title)).setText("One");
-
-        //  item.setIndicatorColorRes(R.color.black);
-        //      item.setIndicatorIconRes(R.drawable.ic_icon);
-
-
-
-
-        //region SEAKBAR SET UP
-
-        // get seekbar from view
-        final CrystalRangeSeekbar rangeSeekbar = (CrystalRangeSeekbar) root.findViewById(R.id.rangeSeekbar1);
-
-// get min and max text view
-        final TextView tvMin = (TextView) root.findViewById(R.id.textMin1);
-        final TextView tvMax = (TextView) root.findViewById(R.id.textMax1);
-
-// set listener
-        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener(){
-            @Override
-            public void valueChanged(Number minValue, Number maxValue){
-                tvMin.setText(String.valueOf(minValue));
-                tvMax.setText(String.valueOf(maxValue));
-            }
-        });
-
-// set final value listener
-        rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
-
-
-        //endregion SEEKBAR SET UP
-
-
-        //endregion  ExpandingList set up
-
 
         return root;
     }
 
+    public void Advanced_Search_ExpandList_SetUp(){
+
+        ExpandingList expandingList = (ExpandingList) root.findViewById(R.id.expanding_list_main);
+
+        ExpandingItem item = expandingList.createNewItem(R.layout.expanding_layout);
+
+        TextView Title= (TextView) item.findViewById(R.id.title);
+        Title.setText(R.string.AdvancedSearch);
+
+        //This will create 1 items
+        item.createSubItems(1);
+
+        //get a sub item View
+        View AdvancedSettings_items = item.getSubItemView(0);
+
+        states_input_ACTextview=(AutoCompleteTextView)AdvancedSettings_items.findViewById(
+                R.id.states_input_ACTextview);
 
 
+        ArrayAdapter<String> states_adapter=new ArrayAdapter<String>(root.getContext(),
+                android.R.layout.simple_list_item_1,statesArray);
 
+
+        states_input_ACTextview.setAdapter(states_adapter);
+
+        ((TextView) AdvancedSettings_items.findViewById(R.id.sub_title)).setText("One");
+
+        SeekBar_setup();
+    }
 
     public void setSearchBtn(){
         Button searchbtn=(Button)root.findViewById(R.id.search_btn);
 
-        searchbtn.setOnClickListener(new View.OnClickListener(){
+        searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Log.d("Search Button","CLicked/////////////////////////////////////////");
+//                set_BarSeek_Min_MAx();
+
+                Results_Main_page_Controller.SearchbyState = states_input_ACTextview.getText().toString();
+
+                Results_Main_page_Controller.SearchbyName = school_Name_Edit_Text.getText().toString();
 
                 Fragment fragment = new Results_Main_page_Controller();
                 FragmentTransaction fr = getFragmentManager().beginTransaction();
                 fr.replace(R.id.nav_host_fragment, fragment);
-                //transaction.addToBackStack(null);
                 fr.commit();
-
-
-
 
             }
         }
-
-
         );
 
 
     }
 
+    public void SeekBar_setup(){
 
+        // get seekbar from view
+        rangeSeekbar = (CrystalRangeSeekbar) root.findViewById(R.id.rangeSeekbar1);
+
+        // get min and max text view
+        final TextView seekBarMintv = (TextView) root.findViewById(R.id.textMin1);
+        final TextView seekBarMaxtv = (TextView) root.findViewById(R.id.textMax1);
+
+        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener(){
+            @Override
+            public void valueChanged(Number minValue, Number maxValue){
+                seekBarMintv.setText(String.valueOf(minValue));
+                seekBarMaxtv.setText(String.valueOf(maxValue));
+
+                Results_Main_page_Controller.SearchbyTuitionMin = minValue.intValue();
+                Results_Main_page_Controller.SearchbyTuitionMax = maxValue.intValue();
+
+            }
+        });
+
+
+    }
+
+//    public void set_BarSeek_Min_MAx(){
+//
+//        rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+//            @Override
+//            public void finalValue(Number minValue, Number maxValue) {
+//                Results_Main_page_Controller.SearchbyTuitionMin = (int)minValue;
+//                Results_Main_page_Controller.SearchbyTuitionMax = (int)maxValue;
+//
+//
+//                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+//            }
+//        });
+//    }
 
 
 

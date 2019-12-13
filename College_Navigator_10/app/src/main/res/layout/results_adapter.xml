@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:paddingBottom="10dp"
-  >
+    android:layout_height="100dp"
+    android:paddingBottom="10dp">
 
 
     <LinearLayout
@@ -17,14 +16,15 @@
         android:background="@drawable/result_item_background"
         android:orientation="horizontal"
         android:paddingStart="10dp"
+        android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="174dp"
-            android:layout_height="48dp"
+            android:layout_width="176dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:orientation="vertical"
 
@@ -34,14 +34,14 @@
             <TextView
                 android:id="@+id/SchoolName_TextView"
                 android:layout_width="match_parent"
-                android:layout_height="29dp"
+                android:layout_height="33dp"
                 android:background="@color/white"
                 android:text="@string/NameofSchool" />
 
             <TextView
                 android:id="@+id/SchoolState_TextView"
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="@string/SchoolStatetr"
                 android:textSize="12sp" />
@@ -68,7 +68,7 @@
             <TextView
                 android:id="@+id/outState_Tuition_TextView"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:text="@string/SchoolTutionOutstate"
                 android:textAlignment="center"
