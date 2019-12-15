@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+
+    <Button
+        android:id="@+id/back_btn_College_Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/School_Name_College_Page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/SchoolNamestr"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_btn_College_Page" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@color/greener"
+        android:text="@string/SAT_accepted"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/School_Name_College_Page" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="488dp"
+
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.114"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/Tution_TV_College_Page"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+
+
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/instate_outstate_tuition"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:id="@+id/Location_TV_College_Page"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/States"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/SAT_Reading_TV_College_page"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/Reading_SAT_str"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/SAT_math_TV_College_Page"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/Math_SAT_str"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/url_TV_College_Page"
+            android:layout_width="380dp"
+            android:layout_height="match_parent"
+
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/firebase_database_url"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/heart_btn_College_Page"
+        android:layout_width="39dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/blue"
+        android:contentDescription="@string/mystring"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/big_heart_logo" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

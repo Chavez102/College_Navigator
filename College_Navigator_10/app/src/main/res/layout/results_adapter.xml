@@ -9,6 +9,7 @@
 
     <LinearLayout
 
+        android:id="@+id/Linear_LayOut"
         android:layout_width="380dp"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"

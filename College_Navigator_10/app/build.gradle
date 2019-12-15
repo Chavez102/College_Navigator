@@ -56,5 +56,13 @@ dependencies {
     implementation files('libs\\com.fasterxml.jackson.core.jar')
 
 
+//    implementation (
+//            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
+//            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
+//            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
+//    )
+
+
+
 }
 apply plugin: 'com.google.gms.google-services'

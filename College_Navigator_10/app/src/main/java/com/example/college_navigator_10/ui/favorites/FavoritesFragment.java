@@ -1,6 +1,7 @@
 package com.example.college_navigator_10.ui.favorites;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.college_navigator_10.ui.home.ResultsList_Adapter;
 import java.util.ArrayList;
 
 import static com.example.college_navigator_10.MainActivity.Official_Current_User;
+import static com.example.college_navigator_10.MainActivity.commingfrom;
 
 public class FavoritesFragment extends Fragment {
     ArrayList<College> colleges_List=new ArrayList<>();
@@ -24,20 +26,14 @@ public class FavoritesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        commingfrom="FavoritesFragment";
+
 
 
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
 
 
-
-        for(int i=0;i<50;i++){
-            College c3=new College();
-            c3.setSchoolname("Name"+i);
-            c3.setinstate_tuition(String.valueOf(i));
-
-
-            colleges_List.add(c3);
-        }
+        Log.d("SAT",Official_Current_User.getlikedCollege()+"");
 
 
         ListView favorites_listView=(ListView)root.findViewById(R.id.favorites_listView);

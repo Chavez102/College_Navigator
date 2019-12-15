@@ -31,6 +31,8 @@ import com.example.college_navigator_10.R;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
+import static com.example.college_navigator_10.MainActivity.commingfrom;
+
 public class HomeFragment extends Fragment {
     //region public static String[] statesArray=new String[]
     public static String[] statesArray=new String[]{"California", "Alabama", "Arkansas", "Arizona",
@@ -99,6 +101,7 @@ public class HomeFragment extends Fragment {
 
     public void setSearchBtn(){
         Button searchbtn=(Button)root.findViewById(R.id.search_btn);
+        commingfrom="HomeFragment";
 
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override

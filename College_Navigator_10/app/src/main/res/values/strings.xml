@@ -9,12 +9,22 @@
 
     <string name="Space_stn"> </string>
 
+    <!--///// College Page///////////-->
+    <string name="SAT_accepted">Your SAT Score is higher than the Schools Average SAT Score </string>
+    <string name="instate_outstate_tuition">Instate \nOutState Tuition</string>
+
+
+
+
+
+
+
+
+
+
+
 
     <!--///// Favortes Page///////////-->
-
-
-
-
 
 
 
@@ -26,7 +36,6 @@
  Find the right School for you </string>
 
 
-
     <!--///// Log In Page///////////-->
     <string name="LogIn_str">Log In</string>
     <string name="Username">Username</string>
@@ -35,15 +44,11 @@
     <string name="Guest">Countinue As a Guest</string>
 
 
-
-
     <!--///// Register Page///////////-->
     <string name="Register_str">Register</string>
     <string name="Email_str">Email</string>
     <string name="Math_SAT_str">Math SAT Score</string>
     <string name="Reading_SAT_str">Reading SAT Score</string>
-
-
 
 
     <!--///// Search page///////////-->
@@ -71,6 +76,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
 
 
 </resources>

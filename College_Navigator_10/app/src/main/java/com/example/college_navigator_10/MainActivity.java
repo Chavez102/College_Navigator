@@ -50,7 +50,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    static DatabaseReference reff;
+    public static DatabaseReference reff;
+
+    public static String commingfrom;
+
+
+
+
     College mycollege;
     ObjectMapper mapper=new ObjectMapper();
 
@@ -135,8 +141,9 @@ public class MainActivity extends AppCompatActivity {
                 guest_Btn.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view) {
-                        AddingMenu();
-                        logIn_popup.hide();
+                        CheckUser("guest","password");
+//                        AddingMenu();
+//                        logIn_popup.hide();
 
                     }
                 });
@@ -260,8 +267,6 @@ public class MainActivity extends AppCompatActivity {
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
 
-
-
                 String original_url = "https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math";
                 //https://api.data.gov/ed/collegescorecard/v1/schools.json?&per_page=100&api_key=LsIWyvYAHhge9xFr8aI32ujIVxSaaXLzNbN7U13V&_fields=latest.cost.tuition.out_of_state,id,school.name,school.city,school.zip,school.state,school.school_url,latest.cost.tuition.in_state,latest.admissions.sat_scores.25th_percentile.critical_reading,latest.admissions.sat_scores.25th_percentile.math,latest.admissions.sat_scores.75th_percentile.critical_reading,latest.admissions.sat_scores.75th_percentile.math
 
@@ -294,6 +299,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     }
+
+                    Log.d("Page"+page,"Read //////////////////////////////////////////////////////////");
 
                     page++;
                     url = original_url + pageAddOn + page;

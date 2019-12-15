@@ -101,15 +101,16 @@ public class College {
 	}
 
 	public void setMathpercentile_25(String mathpercentile_25) {
-		mathpercentile_25 = mathpercentile_25;
+		this.mathpercentile_25 = mathpercentile_25;
 	}
 
 	public void setReadingpercentile_75(String readingpercentile_75) {
-		readingpercentile_75 = readingpercentile_75;
+		this.readingpercentile_75 = readingpercentile_75;
 	}
 
 	public void setMathpercentile_75(String mathpercentile_75) {
-		mathpercentile_75 = mathpercentile_75;
+
+		this.mathpercentile_75 = mathpercentile_75;
 	}
 
 	public void setId(String id) {
@@ -118,5 +119,24 @@ public class College {
 
 	public void setSchoolname(String schoolname) {
 		this.schoolname = schoolname;
+	}
+
+	@Override
+	public String toString() {
+		return "College [ "
+				+ "\n schoolname=" + schoolname
+				+ "\n zip=" + zip
+				+ "\n state=" + state + ""
+				+ "\n id=" + id
+				+ "\n url=" + url
+				+ "\n schoolcity=" + schoolcity
+				+ "\n tuition_outstate=" + tuition_outstate
+				+ "\n instate=" + instate_tuition
+				+ "\n Readingpercentile_25=" + Readingpercentile_25
+
+				+ "\n Mathpercentile_25=" + mathpercentile_25
+				+ "\n Readingpercentile_75=" + readingpercentile_75
+				+ "\n Mathpercentile_75=" + mathpercentile_75
+				+ "\n ]";
 	}
 }
