@@ -45,11 +45,11 @@ public class College {
 	}
 
 	public String getTuition_outstate() {
-		return tuition_outstate;
+		return this.tuition_outstate;
 	}
 
 	public String getinstate_tuition() {
-		return instate_tuition;
+		return this.instate_tuition;
 	}
 
 	public String getReadingpercentile_25() {

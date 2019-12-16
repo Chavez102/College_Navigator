@@ -1,7 +1,7 @@
 package com.example.college_navigator_10.ui.favorites;
 
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +31,6 @@ public class FavoritesFragment extends Fragment {
 
 
         View root = inflater.inflate(R.layout.fragment_favorites, container, false);
-
-
-        Log.d("SAT",Official_Current_User.getlikedCollege()+"");
 
 
         ListView favorites_listView=(ListView)root.findViewById(R.id.favorites_listView);

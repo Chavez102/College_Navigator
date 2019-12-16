@@ -26,12 +26,18 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListen
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.diegodobelo.expandingview.ExpandingItem;
 import com.diegodobelo.expandingview.ExpandingList;
+import com.example.college_navigator_10.Data_Management_Colleges.College;
 import com.example.college_navigator_10.MainActivity;
 import com.example.college_navigator_10.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import static com.example.college_navigator_10.MainActivity.commingfrom;
+import static com.example.college_navigator_10.MainActivity.reff;
 
 public class HomeFragment extends Fragment {
     //region public static String[] statesArray=new String[]
@@ -43,6 +49,8 @@ public class HomeFragment extends Fragment {
             "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
             "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" };
 
+    public static String[] SchoolNamesArray=new String[7112];
+
 
     //endregion  public static String[] statesArray=new String[]
 
@@ -52,7 +60,7 @@ public class HomeFragment extends Fragment {
     RangeSeekBar rangeSeekBar;
 
     AutoCompleteTextView states_input_ACTextview;
-    EditText school_Name_Edit_Text;
+    AutoCompleteTextView school_Name_AutoCompleteTextView;
     CrystalRangeSeekbar rangeSeekbar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,13 +68,70 @@ public class HomeFragment extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        school_Name_Edit_Text=(EditText) root.findViewById(R.id.School_Name_editText);
+        school_Name_AutoCompleteTextView=(AutoCompleteTextView) root.findViewById(R.id.School_Name_editText);
+        school_Name_AutoCompleteTextView_setup();
+
 
         Advanced_Search_ExpandList_SetUp();
 
         setSearchBtn();
 
         return root;
+    }
+
+    private void school_Name_AutoCompleteTextView_setup() {
+
+
+        school_Name_AutoCompleteTextView=(AutoCompleteTextView)root.findViewById(
+                R.id.School_Name_editText);
+
+        fillSchoolNameArray();
+
+
+        ArrayAdapter<String> Schoolname_adapter=new ArrayAdapter<String>(root.getContext(),
+                android.R.layout.simple_list_item_1,SchoolNamesArray);
+
+
+        school_Name_AutoCompleteTextView.setAdapter(Schoolname_adapter);
+
+
+
+    }
+
+    private void fillSchoolNameArray() {
+
+
+
+
+        ValueEventListener valueEventListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int count=0;
+
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+
+                        College mycollege= snapshot.getValue(College.class);
+                        SchoolNamesArray[count]=mycollege.getSchoolname();
+                        count++;
+
+
+
+                        //   colleges_List.add(mycollege);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        reff= FirebaseDatabase.getInstance().getReference("Colleges");
+        reff.addListenerForSingleValueEvent(valueEventListener);
+
+
     }
 
     public void Advanced_Search_ExpandList_SetUp(){
@@ -111,7 +176,7 @@ public class HomeFragment extends Fragment {
 
                 Results_Main_page_Controller.SearchbyState = states_input_ACTextview.getText().toString();
 
-                Results_Main_page_Controller.SearchbyName = school_Name_Edit_Text.getText().toString();
+                Results_Main_page_Controller.SearchbyName = school_Name_AutoCompleteTextView.getText().toString();
 
                 Fragment fragment = new Results_Main_page_Controller();
                 FragmentTransaction fr = getFragmentManager().beginTransaction();

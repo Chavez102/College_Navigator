@@ -8,10 +8,11 @@
 
     <Button
         android:id="@+id/back_btn_College_Page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,11 +29,10 @@
         app:layout_constraintTop_toBottomOf="@+id/back_btn_College_Page" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/acceptance_decision_TV_College_Page"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:background="@color/greener"
-        android:text="@string/SAT_accepted"
+        android:background="@color/blue"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -40,15 +40,16 @@
         app:layout_constraintTop_toBottomOf="@+id/School_Name_College_Page" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="488dp"
+        android:layout_width="408dp"
+        android:layout_height="466dp"
 
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.114"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acceptance_decision_TV_College_Page"
+        app:layout_constraintVertical_bias="0.114">
 
         <TextView
             android:id="@+id/Tution_TV_College_Page"
