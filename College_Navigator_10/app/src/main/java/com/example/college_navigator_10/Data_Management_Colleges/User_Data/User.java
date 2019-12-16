@@ -2,14 +2,40 @@ package com.example.college_navigator_10.Data_Management_Colleges.User_Data;
 
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.example.college_navigator_10.Data_Management_Colleges.College;
 
 import java.util.ArrayList;
 
-public class User {
+public class User extends ArrayList{
     String username,password,email,Math_SAT,Reading_SAT;
 
     public static ArrayList<College> likedCollege=new ArrayList<>();
+
+//    @Override
+//    public int indexOf(@Nullable Object o) {
+//        Log.d("Working","/////////////////");
+//        College mycollege=(College) o;
+//        Log.d("Working","/////////////////");
+//        Log.d("My college name=",mycollege.getSchoolname()+"/////////////////");
+//        int i=0;
+//        for(  i=0;i<likedCollege.size();i++ ){
+//            College currentcollege=likedCollege.get(i);
+//            Log.d("i=",i+"/////////////////");
+//            Log.d("current college name=",currentcollege.getSchoolname()+"/////////////////");
+//
+//
+//
+//            if(mycollege.getSchoolname().equals(currentcollege.getSchoolname())){
+//                return super.indexOf(currentcollege);
+//            }
+//        }
+//
+//        return super.indexOf(o);
+//    }
+
+
 
 
     public User(){

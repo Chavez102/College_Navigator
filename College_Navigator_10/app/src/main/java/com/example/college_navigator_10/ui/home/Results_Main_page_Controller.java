@@ -78,9 +78,6 @@ public class Results_Main_page_Controller extends Fragment {
 
         StateSymbol=ConvertState_to_StateSymbol(SearchbyState);
 
-        Log.d("after"," Symbol method//////////////////////////////////////;"+StateSymbol);
-
-
 
         Boolean searching_by_Name=false,
          searching_by_state=false,
@@ -94,6 +91,8 @@ public class Results_Main_page_Controller extends Fragment {
             searching_by_state=true;
         }
 
+
+
         query_by_what(searching_by_Name,
                       searching_by_state,
                       searching_by_tuition);
@@ -106,20 +105,6 @@ public class Results_Main_page_Controller extends Fragment {
 
 
         return root;
-
-    }
-
-    private void printArrayCollege(ArrayList<College> list) {
-        Log.d("Start Printing ",
-                "WWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-        for(int i=0;i<list.size();i++){
-            Log.d("College name",list.get(i).getSchoolname());
-
-
-        }
-        Log.d("Finish Printing ",
-                "WWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-
 
     }
 
@@ -231,7 +216,7 @@ public class Results_Main_page_Controller extends Fragment {
 
         if (searching_by_Name==true){
 
-            Log.d("searchbyName","True/////////////////////////////////");
+
              query = FirebaseDatabase.getInstance().getReference("Colleges")
                     .orderByChild("schoolname")
                     .equalTo(SearchbyName);
@@ -240,13 +225,13 @@ public class Results_Main_page_Controller extends Fragment {
 
         }
         else if(searching_by_state==true){
-            Log.d("searchbyState","True/////////////////////////////////");
-
-            Log.d("State",SearchbyState+"/////////////////////////////////");
-
-
-
-            Log.d("StateSymbol",StateSymbol+"//////////////////////////////////////////////");
+//            Log.d("searchbyState","True/////////////////////////////////");
+//
+//            Log.d("State",SearchbyState+"/////////////////////////////////");
+//
+//
+//
+//            Log.d("StateSymbol",StateSymbol+"//////////////////////////////////////////////");
 
 
 

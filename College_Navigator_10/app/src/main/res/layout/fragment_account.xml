@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context=".ui.account.account" >
+    tools:context=".ui.account.account">
 
     <TextView
         android:id="@+id/textView26"
@@ -14,12 +14,26 @@
         android:layout_marginStart="52dp"
 
 
+        android:layout_marginTop="12dp"
         android:background="@color/white"
         android:gravity="center"
         android:text="@string/Username"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/username_bottom_imageView_Account_Page" />
+
+    <TextView
+        android:id="@+id/username_Account_Page"
+        android:layout_width="164dp"
+        android:layout_height="65dp"
+
+
+        android:layout_marginBottom="12dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView24"
+        app:layout_constraintStart_toEndOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/textView22"
@@ -98,19 +112,6 @@
         app:layout_constraintTop_toBottomOf="@+id/username_Account_Page" />
 
     <TextView
-        android:id="@+id/username_Account_Page"
-        android:layout_width="164dp"
-        android:layout_height="65dp"
-
-
-        android:layout_marginBottom="12dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView24"
-        app:layout_constraintStart_toEndOf="@+id/textView26" />
-
-    <TextView
         android:id="@+id/textView20"
         android:layout_width="164dp"
         android:layout_height="60dp"
@@ -169,31 +170,43 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_marginStart="112dp"
-        android:layout_marginBottom="16dp"
         android:contentDescription="@string/mystring"
-        android:src="@drawable/account_logo"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/username_bottom_imageView_Account_Page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.742"
+        app:srcCompat="@drawable/account_logo" />
 
     <Button
         android:id="@+id/choose_btn_Account_Page"
-        android:layout_width="60dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="88dp"
-        app:layout_constraintBottom_toTopOf="@+id/username_Account_Page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toEndOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:text="TextView"
+        android:layout_marginTop="24dp"
+        android:text="@string/choose_image"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username_bottom_imageView_Account_Page"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="216dp"
+        android:gravity="center"
+
+        android:text="@string/Username"
+
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

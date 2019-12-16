@@ -138,6 +138,9 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
                 public void onClick(View view) {
 
                     Log.d("heart","PRESSED////////////////////////////////////0");
+                    Log.d("liked",liked+"////////////////////////////////////0");
+
+
                     if (liked==false){
                         liked=!liked;
                         heartButton.setImageResource(R.drawable.red_heart_logo);
@@ -195,7 +198,14 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
     public static void remove_College_toUserLikedColleges(College collegetobe_Removed){
 
 
-        Official_Current_User.likedCollege.remove(collegetobe_Removed);
+        for (College incollege:Official_Current_User.getlikedCollege()){
+            if(incollege.getSchoolname().equals(collegetobe_Removed.getSchoolname())){
+                Official_Current_User.likedCollege.remove(incollege);
+            }
+        }
+
+
+
 
 
 

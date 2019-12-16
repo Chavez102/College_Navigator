@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
 
 
     View root;
-    RangeSeekBar rangeSeekBar;
+
 
     AutoCompleteTextView states_input_ACTextview;
     AutoCompleteTextView school_Name_AutoCompleteTextView;
@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
 
         states_input_ACTextview.setAdapter(states_adapter);
 
-        ((TextView) AdvancedSettings_items.findViewById(R.id.sub_title)).setText("One");
+        ((TextView) AdvancedSettings_items.findViewById(R.id.sub_title)).setText("Tution Range");
 
         SeekBar_setup();
     }
@@ -195,6 +195,10 @@ public class HomeFragment extends Fragment {
         // get seekbar from view
         rangeSeekbar = (CrystalRangeSeekbar) root.findViewById(R.id.rangeSeekbar1);
 
+
+        rangeSeekbar.setMinValue(1000);
+        rangeSeekbar.setMaxValue(70000);
+
         // get min and max text view
         final TextView seekBarMintv = (TextView) root.findViewById(R.id.textMin1);
         final TextView seekBarMaxtv = (TextView) root.findViewById(R.id.textMax1);
@@ -210,6 +214,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
 
 
     }

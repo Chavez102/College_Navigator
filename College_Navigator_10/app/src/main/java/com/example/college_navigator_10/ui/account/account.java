@@ -42,10 +42,14 @@ public class account extends Fragment {
         root= inflater.inflate(R.layout.fragment_account, container, false);
 
 
+
+
+
         TextView email_TV=(TextView) root.findViewById(R.id.email_Account_Page);
         TextView reading_SAT_TV=(TextView) root.findViewById(R.id.SAT_reading_Account_Page);
         TextView math_SAT_TV=(TextView) root.findViewById(R.id.SAT_math_Account_Page);
         TextView username_TV=(TextView) root.findViewById(R.id.username_Account_Page);
+        TextView username_bottom_imageView_Account_Page=(TextView) root.findViewById(R.id.username_bottom_imageView_Account_Page);
         TextView password_TV=(TextView) root.findViewById(R.id.password_Account_Page);
 
 
@@ -53,7 +57,9 @@ public class account extends Fragment {
         reading_SAT_TV.setText(Official_Current_User.getReading_SAT());
         math_SAT_TV.setText(Official_Current_User.getMath_SAT());
         username_TV.setText(Official_Current_User.getUsername());
+        username_bottom_imageView_Account_Page.setText(Official_Current_User.getUsername());
         password_TV.setText(Official_Current_User.getPassword());
+
 
 
 
@@ -74,9 +80,6 @@ public class account extends Fragment {
         return root;
     }
 
-    private static final int PICK_IMAGE=100;
-    Uri imageUri;
-    ImageView imageView;
 
     private void choose_picture_btn_setup() {
         Button choose_pick=(Button)root.findViewById(R.id.choose_btn_Account_Page);
@@ -89,6 +92,11 @@ public class account extends Fragment {
             }
         });
     }
+
+    private static final int PICK_IMAGE=100;
+    Uri imageUri;
+    ImageView imageView;
+
    private void openGallary(){
         Intent gallery=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery,PICK_IMAGE);

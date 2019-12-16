@@ -24,6 +24,7 @@
     <string name="Cancel">Cancel</string>
     <string name="Change">Change</string>
     <string name="hint_Account_dialog">New Name</string>
+    <string name="choose_image">Choose \nImage</string>
 
 
     <!--///// Welcome Page///////////-->
