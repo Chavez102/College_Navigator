@@ -198,17 +198,14 @@ public class ResultsList_Adapter extends ArrayAdapter<College> {
     public static void remove_College_toUserLikedColleges(College collegetobe_Removed){
 
 
-        for (College incollege:Official_Current_User.getlikedCollege()){
+        for (int i=0;i<Official_Current_User.likedCollege.size();i++){
+            College incollege=Official_Current_User.getlikedCollege().get(i);
+            Log.d("likedname",incollege.getSchoolname());
+
             if(incollege.getSchoolname().equals(collegetobe_Removed.getSchoolname())){
                 Official_Current_User.likedCollege.remove(incollege);
             }
         }
-
-
-
-
-
-
 
         reff=FirebaseDatabase.getInstance().getReference()
                 .child("AllUsers")

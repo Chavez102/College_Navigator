@@ -73,8 +73,7 @@ public class Results_Main_page_Controller extends Fragment {
 
         ArrayList<College> list1= new ArrayList<>();
 
-//        SearchbyName="Empire Beauty School-N Memphis";
-//        SearchbyState="TN";
+
 
         StateSymbol=ConvertState_to_StateSymbol(SearchbyState);
 
@@ -209,13 +208,38 @@ public class Results_Main_page_Controller extends Fragment {
             }
         };
 
+        ValueEventListener SearchbyTution_valueEventListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                colleges_List.clear();
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+
+                        College mycollege= snapshot.getValue(College.class);
 
 
+
+                        colleges_List.add(mycollege);
+
+
+                    }
+                    resultList_adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
 
 
 
         if (searching_by_Name==true){
+            Log.d("searchbyState","True/////////////////////////////////");
 
+            Log.d("State",SearchbyState+"/////////////////////////////////");
 
              query = FirebaseDatabase.getInstance().getReference("Colleges")
                     .orderByChild("schoolname")
@@ -225,15 +249,13 @@ public class Results_Main_page_Controller extends Fragment {
 
         }
         else if(searching_by_state==true){
-//            Log.d("searchbyState","True/////////////////////////////////");
-//
-//            Log.d("State",SearchbyState+"/////////////////////////////////");
+            Log.d("searchbyState","True/////////////////////////////////");
+
+            Log.d("State",SearchbyState+"/////////////////////////////////");
 //
 //
 //
 //            Log.d("StateSymbol",StateSymbol+"//////////////////////////////////////////////");
-
-
 
 
             query.addListenerForSingleValueEvent(SearchbyState_valueEventListener);

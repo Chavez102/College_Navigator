@@ -30,7 +30,7 @@
     <!--///// Welcome Page///////////-->
     <string name="WelcomeTitle">College Navigator</string>
     <string name="WelcomeButtonstring">Let\'s Begin</string>
-    <string name="Download_str">Download Latest Information</string>
+    <string name="Download_str">Update Data</string>
     <string name="WelcomeSubtitle">Search for Any school and
  Find the right School for you </string>
 
