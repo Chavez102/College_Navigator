@@ -61,9 +61,6 @@ public class account extends Fragment {
         password_TV.setText(Official_Current_User.getPassword());
 
 
-
-
-
         changeTextview_Dialog=new Dialog(root.getContext());
 
         textView_pressed_setup(email_TV,"email");
@@ -113,16 +110,6 @@ public class account extends Fragment {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -201,19 +188,10 @@ public class account extends Fragment {
 
 
 
-
-
-
-
-
-
-
                 reff= FirebaseDatabase.getInstance().getReference()
                         .child("AllUsers")
                         .child(Official_Current_User.getUsername());
                 reff.child(parameter).setValue(Add_this);
-
-
 
                 changeTextview_Dialog.hide();
 

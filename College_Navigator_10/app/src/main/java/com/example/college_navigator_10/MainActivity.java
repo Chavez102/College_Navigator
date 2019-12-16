@@ -346,7 +346,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void addUserToDatabase(User myuser){
+        DatabaseReference reff;
 
+            Log.d("this is new user",myuser.getUsername()+"/////////////////////");
+            
                 reff=FirebaseDatabase.getInstance().getReference()
                 .child("AllUsers")
                 .child(myuser.getUsername());
